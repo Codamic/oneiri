@@ -1,15 +1,17 @@
 (ns oneiri.views.home
   (:require [oneiri.views.grommet :refer [app]]
-            [re-frame.core :as re-frame]))
+            [re-frame.core        :as re-frame]
+            [oneiri.utils         :refer [dir-class]]))
 
 
 (defn home
   ([]
    (let [lang (re-frame/subscribe [:lang])]
      ;; Content
-     (js/console.log "asdasdasdasd")
+
      [app {:lang @lang
-           :className  (if (= @lang :en) "ltr" "rtl")
+           :className  (dir-class @lang)
            :centered false}
-      [:h1 "HI"]]))
+
+      [:h1 @lang]]))
   ([children]))

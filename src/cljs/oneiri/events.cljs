@@ -11,3 +11,8 @@
  :set-active-panel
  (fn [db [_ active-panel]]
    (assoc db :active-panel active-panel)))
+
+(re-frame/reg-event-db
+ :set-communication-state
+ (fn [db [_ state]]
+   (update-in db [:communication :state] (fn [_] state))))
