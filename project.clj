@@ -4,7 +4,10 @@
                  [reagent "0.6.0"]
                  [re-frame "0.9.2"]
                  [re-frisk "0.3.2"]
-                 [secretary "1.2.3"]]
+                 [secretary "1.2.3"]
+                 [cljsjs/react "15.4.0-0"]
+                 [cljsjs/react-dom "15.4.0-0"]
+                 [cljsjs/grommet "1.3.4-0"]]
 
   :plugins [[lein-cljsbuild "1.1.4"]
             [lein-less "1.7.5"]]

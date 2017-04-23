@@ -3,9 +3,9 @@
     (:require [re-frame.core :as re-frame]))
 
 (re-frame/reg-sub
- :name
+ :lang
  (fn [db]
-   (:name db)))
+   (:lang db)))
 
 (re-frame/reg-sub
  :active-panel

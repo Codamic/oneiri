@@ -1,30 +1,10 @@
 (ns oneiri.views
-    (:require [re-frame.core :as re-frame]))
-
-
-;; home
-
-(defn home-panel []
-  (let [name (re-frame/subscribe [:name])]
-    (fn []
-      [:div (str "Hello from " @name ". This is the Home Page.")
-       [:div [:a {:href "#/about"} "go to About Page"]]])))
-
-
-;; about
-
-(defn about-panel []
-  (fn []
-    [:div "This is the About Page."
-     [:div [:a {:href "#/"} "go to Home Page"]]]))
-
-
-;; main
+  (:require [re-frame.core        :as re-frame]
+            [oneiri.views.home   :refer [home]]))
 
 (defn- panels [panel-name]
   (case panel-name
-    :home-panel [home-panel]
-    :about-panel [about-panel]
+    :home-panel [home]
     [:div]))
 
 (defn show-panel [panel-name]
