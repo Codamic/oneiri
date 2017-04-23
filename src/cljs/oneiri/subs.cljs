@@ -8,6 +8,11 @@
    (:lang db)))
 
 (re-frame/reg-sub
+ :recent-articles
+ (fn [db]
+   (:recent-articles db)))
+
+(re-frame/reg-sub
  :active-panel
  (fn [db _]
    (:active-panel db)))

@@ -20,8 +20,15 @@
 (def title   (r/adapt-react-class (.-Title   js/Grommet)))
 (def menu    (r/adapt-react-class (.-Menu    js/Grommet)))
 (def button  (r/adapt-react-class (.-Button  js/Grommet)))
-(def layer  (r/adapt-react-class (.-Layer  js/Grommet)))
+(def layer   (r/adapt-react-class (.-Layer  js/Grommet)))
 
+(def tiles   (r/adapt-react-class (.-Tiles  js/Grommet)))
+(def tile    (r/adapt-react-class (.-Tile   js/Grommet)))
+
+(def card   (r/adapt-react-class (.-Card  js/Grommet)))
+
+(def glist   (r/adapt-react-class (.-List  js/Grommet)))
+(def list-item   (r/adapt-react-class (.-ListItem  js/Grommet)))
 
 (defn icon [icon-name]
   (.createElement js/React (clj->js (aget js/Grommet.Icons.Base icon-name))))
