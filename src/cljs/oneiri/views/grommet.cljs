@@ -30,5 +30,12 @@
 (def glist   (r/adapt-react-class (.-List  js/Grommet)))
 (def list-item   (r/adapt-react-class (.-ListItem  js/Grommet)))
 
-(defn icon [icon-name]
-  (.createElement js/React (clj->js (aget js/Grommet.Icons.Base icon-name))))
+(def heading   (r/adapt-react-class (.-Heading  js/Grommet)))
+(def columns   (r/adapt-react-class (.-Columns  js/Grommet)))
+
+(defn icon
+  ([icon-name ]
+   (icon icon-name {}))
+  ([icon-name attrs]
+   (let [ico  (aget js/Grommet.Icons.Base icon-name)]
+     (r/as-element [:> ico attrs]))))

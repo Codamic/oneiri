@@ -1,8 +1,9 @@
 (ns oneiri.views.home
-  (:require [oneiri.views.grommet :refer [app]]
+  (:require [oneiri.views.grommet :refer [app box columns]]
             [re-frame.core        :as re-frame]
             [oneiri.views.articles :refer [articles-list]]
-            [oneiri.utils         :refer [dir-class]]))
+            [oneiri.utils         :refer [dir-class]]
+            [oneiri.views.sidebar :refer [sidebar]]))
 
 (defn home
   ([]
@@ -14,4 +15,7 @@
            :className  (dir-class @lang)
            :centered false}
 
-      children])))
+      [sidebar]
+
+      [box {:pad "large"}
+       children]])))

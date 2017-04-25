@@ -1,7 +1,7 @@
 (ns oneiri.views.articles
   (:require [re-frame.core        :as re-frame]
             [oneiri.logger        :as logger]
-            [oneiri.views.grommet :refer [tiles tile anchor glist list-item icon]]
+            [oneiri.views.grommet :refer [title anchor glist list-item icon box]]
             [reagent.core         :as r]))
 
 
@@ -9,7 +9,8 @@
   "Render a single article"
   [article]
   [list-item {:justify "between"} ^{:key article}
-
+   [title
+    (:title article)]
    [anchor {:href  "//github.com"
             :icon  (icon "LinkNext")
             :label (:title article)
@@ -20,7 +21,7 @@
   "This view is responsible for rendering a list of articles."
   []
   (let [articles (re-frame/subscribe [:recent-articles])]
-
-    [glist {:selectable true :onSelect (fn [_] (js/alert ";)"))}
-     (for [article @articles]
-       ^{:key (:id article)} [render-article article])]))
+    [box {:size :full :alignSelf :stretch}
+     [glist {:selectable true :onSelect (fn [_] (js/alert ";)"))}
+      (for [article @articles]
+        ^{:key (:id article)} [render-article article])]]))
