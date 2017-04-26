@@ -3,7 +3,7 @@
             [re-frame.core        :as re-frame]
             [oneiri.views.articles :refer [articles-list]]
             [oneiri.utils         :refer [dir-class]]
-            [oneiri.views.sidebar :refer [sidebar]]))
+            [oneiri.views.navbar  :refer [navbar]]))
 
 (defn home
   ([]
@@ -15,7 +15,7 @@
            :className  (dir-class @lang)
            :centered false}
 
-      [sidebar]
+      [navbar @lang]
 
       [box {:pad "large"}
        children]])))

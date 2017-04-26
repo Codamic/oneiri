@@ -13,6 +13,8 @@
 (def table-row (r/adapt-react-class (.-TableRow js/Grommet)))
 (def table-header (r/adapt-react-class (.-TableHeader js/Grommet)))
 
+(def search (r/adapt-react-class (.-Search js/Grommet)))
+
 (def sidebar (r/adapt-react-class (.-Sidebar js/Grommet)))
 (def header  (r/adapt-react-class (.-Header  js/Grommet)))
 (def anchor  (r/adapt-react-class (.-Anchor  js/Grommet)))
@@ -31,7 +33,10 @@
 (def list-item   (r/adapt-react-class (.-ListItem  js/Grommet)))
 
 (def heading   (r/adapt-react-class (.-Heading  js/Grommet)))
+(def headline  (r/adapt-react-class (.-Headline  js/Grommet)))
 (def columns   (r/adapt-react-class (.-Columns  js/Grommet)))
+
+(def paragraph (r/adapt-react-class (.-Paragraph  js/Grommet)))
 
 (defn icon
   ([icon-name ]

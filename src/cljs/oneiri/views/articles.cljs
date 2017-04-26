@@ -1,7 +1,7 @@
 (ns oneiri.views.articles
   (:require [re-frame.core        :as re-frame]
             [oneiri.logger        :as logger]
-            [oneiri.views.grommet :refer [title anchor glist list-item icon box]]
+            [oneiri.views.grommet :refer [title heading anchor glist list-item icon box paragraph]]
             [reagent.core         :as r]))
 
 
@@ -9,12 +9,15 @@
   "Render a single article"
   [article]
   [list-item {:justify "between"} ^{:key article}
-   [title
-    (:title article)]
-   [anchor {:href  "//github.com"
-            :icon  (icon "LinkNext")
-            :label (:title article)
-            :primary true}]])
+   [box
+    [title
+     (:title article)]
+    [paragraph (:description article)]
+    [anchor {:href  "//github.com"
+             :icon  (icon "LinkNext")
+             :label (:title article)
+             :primary true}]]
+   [box "sad"]])
 
 
 (defn articles-list
@@ -22,6 +25,11 @@
   []
   (let [articles (re-frame/subscribe [:recent-articles])]
     [box {:size :full :alignSelf :stretch}
+
+     [box {:separator :bottom}
+      [heading {:tag :h2}
+       "Latest Stories"]]
+
      [glist {:selectable true :onSelect (fn [_] (js/alert ";)"))}
       (for [article @articles]
         ^{:key (:id article)} [render-article article])]]))
