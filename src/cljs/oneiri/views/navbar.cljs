@@ -3,6 +3,7 @@
    [oneiri.views.grommet :refer [header box icon button title search]]
    [oneiri.utils         :refer [dir-class]]))
 
+
 (defn navbar
   [lang]
   [header {:full       "horizontal"
@@ -15,7 +16,7 @@
    [title
     [button {:icon  (icon "Fan")
              :plain true
-             :on-click #(js/alert "Menu")}]]
+             :on-click #(prn "asdasd")}]]
 
    [button {:icon  (icon "StandardsPerformance")
             :plain true
@@ -33,6 +34,4 @@
              :placeHolder "Search"}]]
    [button {:icon  (icon "Menu")
             :plain true
-            :on-click #(js/alert "Menu")}]
-
-])
+            :on-click #(js/alert "Menu")}]])

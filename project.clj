@@ -5,6 +5,7 @@
                  [re-frame                  "0.9.2"]
                  [re-frisk                  "0.3.2"]
                  [secretary                 "1.2.3"]
+                 [codamic/hellhound         "0.13.0-SNAPSHOT"]
                  [org.clojure/core.async    "0.3.442"]
                  [com.taoensso/sente        "1.11.0"]
                  [cljsjs/react              "15.4.0-0"]
