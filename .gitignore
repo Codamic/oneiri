@@ -7,3 +7,4 @@ out
 resources/public/css/
 resources/public/js/
 checkouts/
+/.lein-env

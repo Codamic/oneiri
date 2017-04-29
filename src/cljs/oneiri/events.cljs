@@ -1,6 +1,8 @@
 (ns oneiri.events
-    (:require [re-frame.core :as re-frame]
-              [oneiri.db :as db]))
+  (:require [re-frame.core :as re-frame]
+            [hellhound.handlers.app-db]
+            [hellhound.connection :as channels]
+            [oneiri.db :as db]))
 
 (re-frame/reg-event-db
  :initialize-db
@@ -16,3 +18,6 @@
  :set-communication-state
  (fn [db [_ state]]
    (update-in db [:communication :state] (fn [_] state))))
+
+
+(channels/start-event-router! "localhost:4000")
