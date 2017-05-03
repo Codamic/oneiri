@@ -1,15 +1,15 @@
 (defproject oneiri "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure       "1.8.0"]
-                 [org.clojure/clojurescript "1.9.229"]
-                 [reagent                   "0.6.0"]
+                 [org.clojure/clojurescript "1.9.521"]
+                 [reagent                   "0.6.1"]
                  [re-frame                  "0.9.2"]
-                 [re-frisk                  "0.3.2"]
+                 [re-frisk                  "0.4.5"]
                  [secretary                 "1.2.3"]
                  [codamic/hellhound         "0.13.0-SNAPSHOT"]
                  [org.clojure/core.async    "0.3.442"]
                  [com.taoensso/sente        "1.11.0"]
-                 [cljsjs/react              "15.4.0-0"]
-                 [cljsjs/react-dom          "15.4.0-0"]
+                 [cljsjs/react              "15.5.0-0"]
+                 [cljsjs/react-dom          "15.5.0-0"]
                  [cljsjs/grommet            "1.3.4-0"]]
 
   :plugins [[lein-cljsbuild "1.1.4"]
@@ -31,18 +31,18 @@
 
   :profiles
   {:dev
-   {:dependencies [[binaryage/devtools "0.8.2"]
-                   [figwheel-sidecar "0.5.9"]
+   {:dependencies [[binaryage/devtools "0.9.4"]
+                   [figwheel-sidecar "0.5.10"]
                    [com.cemerick/piggieback "0.2.1"]]
 
-    :plugins      [[lein-figwheel "0.5.9"]
+    :plugins      [[lein-figwheel "0.5.10"]
                    [lein-doo "0.1.7"]]
     }}
 
   :cljsbuild
   {:builds
    [{:id           "dev"
-     :source-paths ["src/cljs"]
+     :source-paths ["src/cljs" "checkouts/hellhound/src/cljs/"]
      :figwheel     {:on-jsload "oneiri.core/mount-root"}
      :compiler     {:main                 oneiri.core
                     :output-to            "resources/public/js/compiled/app.js"
