@@ -20,5 +20,10 @@
  (fn [db [_ state]]
    (update-in db [:communication :state] (fn [_] state))))
 
+(re-frame/reg-event-db
+ :select-article
+ (fn [db [_ id]]
+   (update-in db [:selected-article] (fn [_] id))))
+
 
 (channels/start-event-router! "localhost:4000")

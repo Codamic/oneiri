@@ -16,3 +16,8 @@
  :active-panel
  (fn [db _]
    (:active-panel db)))
+
+(re-frame/reg-sub
+ :selected-article
+ (fn [db _]
+   (:selected-article db)))
