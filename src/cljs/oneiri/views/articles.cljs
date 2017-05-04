@@ -8,7 +8,7 @@
 (defn render-article
   "Render a single article"
   [article]
-  [list-item {:justify "between"} ^{:key article}
+  [list-item {:justify "between"} ^{:key (:id article)}
    [box
     [title
      (:title article)]
@@ -24,12 +24,17 @@
   "This view is responsible for rendering a list of articles."
   []
   (let [articles (re-frame/subscribe [:recent-articles])]
-    [box {:size :full :alignSelf :stretch}
+      [box {:size :full :alignSelf :stretch}
 
-     [box {:separator :bottom}
-      [heading {:tag :h2}
-       "Latest Stories"]]
+       [box {:separator :bottom}
+        [heading {:tag :h2}
+         "Latest Stories"]]
 
-     [glist {:selectable true :onSelect (fn [_] (js/alert ";)"))}
-      (for [article @articles]
-        ^{:key (:id article)} [render-article article])]]))
+       (if (empty? @articles)
+         ;; If articles was empty
+         [box {:size :full :alignSelf :stretch :pad :medium}
+          [title "No recent topic has been found."]]
+         ;; If articles was not empty
+         [glist {:selectable true :onSelect (fn [_] (js/alert ";)"))}
+          (for [article @articles]
+            ^{:key (:id article)} [render-article article])])]))

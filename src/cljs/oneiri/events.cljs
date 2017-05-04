@@ -2,6 +2,7 @@
   (:require [re-frame.core :as re-frame]
             [hellhound.handlers.app-db]
             [hellhound.connection :as channels]
+            [hellhound.handlers.app-db]
             [oneiri.db :as db]))
 
 (re-frame/reg-event-db
