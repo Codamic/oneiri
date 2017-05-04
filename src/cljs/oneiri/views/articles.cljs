@@ -2,22 +2,38 @@
   (:require [re-frame.core        :as re-frame]
             [oneiri.logger        :as logger]
             [oneiri.views.grommet :refer [title heading anchor glist list-item icon box paragraph]]
-            [reagent.core         :as r]))
+            [reagent.core         :as r]
+            [hellhound.core       :refer [dispatch->server]]))
 
+(def range (atom [0 10]))
+(defn ask-for-more
+  []
+  (let [new-range (map #(+ % 10) @range)]
+    (dispatch->server [:fetch-articles new-range])
+    (swap! range (fn [_] new-range))))
+
+(defn select-article
+  [article]
+  (re-frame/dispatch [:select-article article]))
 
 (defn render-article
   "Render a single article"
   [article]
-  [list-item {:justify "between"} ^{:key (:id article)}
-   [box
-    [title
-     (:title article)]
-    [paragraph (:description article)]
-    [anchor {:href  "//github.com"
-             :icon  (icon "LinkNext")
-             :label (:title article)
-             :primary true}]]
-   [box "sad"]])
+  (let [selected-id (re-frame/subscribe [:selected-article])]
+    [list-item {:justify "between"} ^{:key (:id article)}
+     [box
+      [title
+       (:title article)]
+      [paragraph (:description article)]
+      [anchor {:href  (:url article)
+               :icon  (icon "LinkNext")
+               :label "More"
+               :target "_blank"
+               :primary true}]]
+     [box {:direction "row" :align "center"}
+      (if (= @selected-id (:id article))
+        [icon "Checkmark"])
+      [anchor {:icon (icon "Like")}]]]))
 
 
 (defn articles-list
@@ -35,6 +51,9 @@
          [box {:size :full :alignSelf :stretch :pad :medium}
           [title "No recent topic has been found."]]
          ;; If articles was not empty
-         [glist {:selectable true :onSelect (fn [_] (js/alert ";)"))}
+         [glist {:selectable true
+                 :onSelect   select-article
+                 :onMore     ask-for-more}
+
           (for [article @articles]
             ^{:key (:id article)} [render-article article])])]))
