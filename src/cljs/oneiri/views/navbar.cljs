@@ -19,7 +19,7 @@
              :on-click #(prn "asdasd")}]]
 
    [anchor {:icon  (icon "Sync")
-            :on-click #(dispatch->server [:fetch-articles])}]
+            :on-click #(dispatch->server [:fetch-articles [0 10]])}]
 
    [box {:flex       true
          :justify    "end"
@@ -32,5 +32,4 @@
              :dropAlign   (clj->js {:right "right"})
              :placeHolder "Search"}]]
    [anchor {:icon  (icon "StandardsPerformance")
-            :plain true
             :on-click #(js/alert "asd")}]])
