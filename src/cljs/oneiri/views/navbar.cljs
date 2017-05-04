@@ -1,7 +1,8 @@
 (ns oneiri.views.navbar
   (:require
-   [oneiri.views.grommet :refer [header box icon button title search]]
-   [oneiri.utils         :refer [dir-class]]))
+   [oneiri.views.grommet :refer [header box icon button title search anchor]]
+   [oneiri.utils         :refer [dir-class]]
+   [hellhound.core       :refer [dispatch->server]]))
 
 
 (defn navbar
@@ -14,13 +15,11 @@
            :className  (dir-class lang)}
 
    [title
-    [button {:icon  (icon "Fan")
-             :plain true
+    [anchor {:icon  (icon "Fan" {:size "medium"})
              :on-click #(prn "asdasd")}]]
 
-   [button {:icon  (icon "StandardsPerformance")
-            :plain true
-            :on-click #(js/alert "asd")}]
+   [anchor {:icon  (icon "Sync")
+            :on-click #(dispatch->server [:fetch-articles])}]
 
    [box {:flex       true
          :justify    "end"
@@ -32,6 +31,6 @@
              :size        "medium"
              :dropAlign   (clj->js {:right "right"})
              :placeHolder "Search"}]]
-   [button {:icon  (icon "Menu")
+   [anchor {:icon  (icon "StandardsPerformance")
             :plain true
-            :on-click #(js/alert "Menu")}]])
+            :on-click #(js/alert "asd")}]])
