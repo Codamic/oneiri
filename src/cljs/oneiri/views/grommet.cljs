@@ -38,6 +38,9 @@
 
 (def paragraph (r/adapt-react-class (.-Paragraph  js/Grommet)))
 
+(def timestamp (r/adapt-react-class (.-Timestamp  js/Grommet)))
+(def value (r/adapt-react-class (.-Value  js/Grommet)))
+
 (defn icon
   ([icon-name ]
    (icon icon-name {}))
