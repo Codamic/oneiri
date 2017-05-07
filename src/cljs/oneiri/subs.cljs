@@ -21,3 +21,8 @@
  :selected-article
  (fn [db _]
    (:selected-article db)))
+
+(re-frame/reg-sub
+ :section-title
+ (fn [db _]
+   (:section-title (:nav db))))

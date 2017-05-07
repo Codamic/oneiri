@@ -2,4 +2,5 @@
 
 (def default-db
   {:lang "en"
-   :recent-articles []})
+   :recent-articles []
+   :nav {:section-title "Latest Stories"}})

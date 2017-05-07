@@ -4,6 +4,19 @@
             [cljsjs.react.dom]
             [cljsjs.grommet]))
 
+(defn icon
+  ([icon-name ]
+   (icon icon-name {}))
+  ([icon-name attrs]
+   (let [ico  (aget js/Grommet.Icons.Base icon-name)]
+     (r/as-element [:> ico attrs]))))
+
+;; (defn spinning
+;;   ([icon-name ]
+;;    (icon icon-name {}))
+;;   ([icon-name attrs]
+;;    (let [ico  (aget js/Grommet.Icons.Base icon-name)]
+;;      (r/as-element [:> ico attrs]))))
 
 (def app   (r/adapt-react-class (.-App   js/Grommet)))
 (def box   (r/adapt-react-class (.-Box   js/Grommet)))
@@ -41,9 +54,4 @@
 (def timestamp (r/adapt-react-class (.-Timestamp  js/Grommet)))
 (def value (r/adapt-react-class (.-Value  js/Grommet)))
 
-(defn icon
-  ([icon-name ]
-   (icon icon-name {}))
-  ([icon-name attrs]
-   (let [ico  (aget js/Grommet.Icons.Base icon-name)]
-     (r/as-element [:> ico attrs]))))
+(def spinning (r/adapt-react-class (.-Spinning  js/Grommet.Icons)))

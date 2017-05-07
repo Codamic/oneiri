@@ -17,5 +17,5 @@
 
       [navbar @lang]
 
-      [box {:pad "large"}
+      [box
        children]])))
