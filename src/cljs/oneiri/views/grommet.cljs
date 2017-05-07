@@ -54,4 +54,6 @@
 (def timestamp (r/adapt-react-class (.-Timestamp  js/Grommet)))
 (def value (r/adapt-react-class (.-Value  js/Grommet)))
 
+(def image (r/adapt-react-class (.-Image  js/Grommet)))
+
 (def spinning (r/adapt-react-class (.-Spinning  js/Grommet.Icons)))

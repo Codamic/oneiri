@@ -2,7 +2,7 @@
   (:require [re-frame.core        :as re-frame]
             [oneiri.logger        :as logger]
             [oneiri.views.grommet :refer [title heading anchor glist list-item icon box paragraph
-                                          timestamp value]]
+                                          timestamp value image]]
             [reagent.core         :as r]
             [hellhound.core       :refer [dispatch->server]]))
 
@@ -61,9 +61,12 @@
   "Render a single article"
   [article]
   (let [selected-id (re-frame/subscribe [:selected-article])]
-    [list-item {:justify "between"} ^{:key (:id article)}
+    [list-item {:justify "between" :on-click #(js/alert "zxc")} ^{:key (:id article)}
      [box {:alignSelf "stretch" :direction "row"
            :align "center" :wrap true}
+
+      [image {:src (:urlToImage article)  :size "small" :alt (:title article)}]
+
       [title {:truncate true}
        (:title article)]]
 
@@ -88,7 +91,7 @@
 
           [title "Fetching stories..."]]
          ;; If articles was not empty
-         [glist {:selectable true
+         [glist {:selectable false
                  :onSelect   select-article
                  :onMore     #(ask-for-more range)}
 
