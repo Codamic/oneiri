@@ -26,7 +26,7 @@
                    [figwheel-sidecar "0.5.13"]
                    [com.cemerick/piggieback "0.2.2"]]
 
-    :plugins      [[lein-figwheel "0.5.10"]
+    :plugins      [[lein-figwheel "0.5.13"]
                    [lein-doo "0.1.7"]]
     }}
 

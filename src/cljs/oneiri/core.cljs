@@ -1,27 +1,20 @@
 (ns oneiri.core
-    (:require [reagent.core :as reagent]
-              [re-frame.core :as re-frame]
-              [re-frisk.core :refer [enable-re-frisk!]]
-              [oneiri.events]
-              [oneiri.subs]
-              [oneiri.routes :as routes]
-              [oneiri.views :as views]
-              [oneiri.config :as config]))
+  (:require
+   [hellhound.logger   :as log]
+   [hellhound.core     :as hellhound]
+   [oneiri.routes      :as router]
+   [oneiri.events      :as events]
+   [oneiri.subs        :as subs]
+   [oneiri.views       :as views]))
 
 
-(defn dev-setup []
-  (when config/debug?
-    (enable-console-print!)
-    (enable-re-frisk!)
-    (println "dev mode")))
+(defn dev-setup [])
 
-(defn mount-root []
-  (re-frame/clear-subscription-cache!)
-  (reagent/render [views/main-panel]
-                  (.getElementById js/document "app")))
-
-(defn ^:export init []
-  (routes/app-routes)
-  (re-frame/dispatch-sync [:initialize-db])
-  (dev-setup)
-  (mount-root))
+(defn ^:export init
+  []
+  (log/info "Starting HellHound application...")
+  (hellhound/init!
+   {:router           (router/app-routes)
+    :dispatch-events  [:initialize-db]
+    :dev-setup        dev-setup
+    :main-view        views/main-panel}))
