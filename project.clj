@@ -1,16 +1,7 @@
 (defproject oneiri "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure       "1.8.0"]
-                 [org.clojure/clojurescript "1.9.521"]
-                 [reagent                   "0.6.1"]
-                 [re-frame                  "0.9.2"]
-                 [re-frisk                  "0.4.5"]
-                 [secretary                 "1.2.3"]
-                 [codamic/hellhound         "0.13.0-SNAPSHOT"]
-                 [org.clojure/core.async    "0.3.442"]
-                 [com.taoensso/sente        "1.11.0"]
-                 [cljsjs/react              "15.5.0-0"]
-                 [cljsjs/react-dom          "15.5.0-0"]
-                 [cljsjs/grommet            "1.3.4-0"]]
+                 [org.clojure/clojurescript "1.9.908"]
+                 [codamic/hellhound         "1.0.0-SNAPSHOT"]]
 
   :plugins [[lein-cljsbuild "1.1.4"]
             [lein-less "1.7.5"]]
@@ -32,8 +23,8 @@
   :profiles
   {:dev
    {:dependencies [[binaryage/devtools "0.9.4"]
-                   [figwheel-sidecar "0.5.10"]
-                   [com.cemerick/piggieback "0.2.1"]]
+                   [figwheel-sidecar "0.5.13"]
+                   [com.cemerick/piggieback "0.2.2"]]
 
     :plugins      [[lein-figwheel "0.5.10"]
                    [lein-doo "0.1.7"]]
