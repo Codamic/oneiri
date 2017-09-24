@@ -5,4 +5,6 @@
 
 (defn home
   []
-  [:div "hello"])
+  [:div
+   [:input {:on-change #(re-frame/dispatch [:oneiri.home.events/set-q (-> % .-target .-value)])}]
+   [:button {:on-click #(re-frame/dispatch [:oneiri.home.events/search])} "Search"]])
